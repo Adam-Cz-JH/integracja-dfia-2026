@@ -161,6 +161,65 @@
     box-shadow:0 0 0 3px rgba(201,122,58,0.2);
   }
 
+  /* ---------- Live "now" marker ---------- */
+  .now-marker{
+    position:absolute;
+    left:16px;
+    display:flex;
+    align-items:center;
+    transform:translateY(-50%);
+    z-index:6;
+    pointer-events:none;
+    transition:top 0.6s ease;
+  }
+  .now-marker__arrow{
+    width:0;
+    height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-right:9px solid var(--brass);
+    flex-shrink:0;
+    margin-right:-1px;
+  }
+  .now-marker__time{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    color:var(--ink);
+    background:var(--brass);
+    padding:3px 7px;
+    border-radius:0 3px 3px 0;
+    box-shadow:0 2px 6px rgba(0,0,0,0.35);
+    white-space:nowrap;
+  }
+  .now-marker__dot{
+    position:absolute;
+    left:9px;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:13px; height:13px;
+    border-radius:50%;
+    background:var(--brass);
+    z-index:5;
+    transition:top 0.6s ease;
+  }
+  .now-marker__dot::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:var(--brass);
+    animation:now-pulse 2s ease-out infinite;
+  }
+  @keyframes now-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(226,187,92,0.55); }
+    100%{ box-shadow:0 0 0 10px rgba(226,187,92,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .now-marker__dot::after{animation:none;}
+  }
+
   .stop-time{
     font-family:'Space Mono', monospace;
     font-size:13px;
@@ -335,48 +394,48 @@
     </div>
 
     <div class="line-day"><span>Dzień 1 — Czwartek</span><span>18.06</span></div>
-    <div class="rail">
+    <div class="rail" data-date="2026-06-18">
 
-      <div class="stop is-key">
+      <div class="stop is-key" data-time="09:00">
         <div class="stop-time">09:00 → 09:15</div>
         <div class="stop-title">Wyjazd z Bronisz</div>
         <p class="stop-desc">Autokar podstawi się o 9:00, wyjazd o 9:15.</p>
         <div class="stop-note">Prosimy o punktualność</div>
       </div>
 
-      <div class="stop">
+      <div class="stop" data-time="11:45">
         <div class="stop-time">11:45</div>
         <div class="stop-title">Przyjazd do hotelu</div>
         <p class="stop-desc">Bagaże zostawiamy w recepcji, w przechowalni.</p>
       </div>
 
-      <div class="stop is-meal">
+      <div class="stop is-meal" data-time="12:00">
         <div class="stop-time">12:00 → 13:00</div>
         <div class="stop-title">Obiad</div>
         <p class="stop-desc">Lunch Szefa Kuchni (bufet, dwudaniowy, napoje i deser) — Restauracja Farbiarnia.</p>
       </div>
 
-      <div class="stop is-activity">
+      <div class="stop is-activity" data-time="13:00">
         <div class="stop-time">13:00 → 15:30</div>
         <div class="stop-title">Golf — atrakcja dla wszystkich</div>
         <p class="stop-desc">Zbiórka w recepcji, spacer ok. 400 m na pole golfowe z trenerem, który omówi zasady gry.</p>
         <div class="stop-note">Odzież wygodna do gry — nie w szpilkach</div>
       </div>
 
-      <div class="stop">
+      <div class="stop" data-time="15:30">
         <div class="stop-time">15:30 → 16:00</div>
         <div class="stop-title">Zakwaterowanie</div>
         <p class="stop-desc">Zbiórka w recepcji, odbiór bagaży i rejestracja w pokojach.</p>
       </div>
 
-      <div class="stop is-key">
+      <div class="stop is-key" data-time="16:00">
         <div class="stop-time">16:00 → 17:00</div>
         <div class="stop-title">Spotkanie zespołu</div>
         <p class="stop-desc">Zbiórka w recepcji, przejście do Baru Barwiarnia — słodkie przekąski.</p>
         <div class="stop-note">Prosimy o punktualne przybycie na 16:00</div>
       </div>
 
-      <div class="stop is-activity">
+      <div class="stop is-activity" data-time="17:00">
         <div class="stop-time">17:00 → 19:00</div>
         <div class="stop-title">Trzy atrakcje równolegle</div>
         <p class="stop-desc">Zbiórka w recepcji, każda grupa przechodzi do swojej lokalizacji.</p>
@@ -387,13 +446,13 @@
         </div>
       </div>
 
-      <div class="stop">
+      <div class="stop" data-time="19:00">
         <div class="stop-time">19:00 → 20:00</div>
         <div class="stop-title">Przerwa przed kolacją</div>
         <p class="stop-desc">Czas na przygotowania lub atrakcje hotelowe, np. basen.</p>
       </div>
 
-      <div class="stop is-meal">
+      <div class="stop is-meal" data-time="20:00">
         <div class="stop-time">20:00 → 02:00</div>
         <div class="stop-title">Kolacja z DJ-em</div>
         <p class="stop-desc">Bufet ciepły i zimny, napoje, desery — sala bankietowa GHI (6H).</p>
@@ -402,15 +461,15 @@
     </div>
 
     <div class="line-day"><span>Dzień 2 — Piątek</span><span>19.06</span></div>
-    <div class="rail">
+    <div class="rail" data-date="2026-06-19">
 
-      <div class="stop is-meal">
+      <div class="stop is-meal" data-time="07:00">
         <div class="stop-time">07:00 → 10:00</div>
         <div class="stop-title">Śniadanie</div>
         <p class="stop-desc">Śniadanie bufetowe — Restauracja Farbiarnia.</p>
       </div>
 
-      <div class="stop is-key">
+      <div class="stop is-key" data-time="10:45">
         <div class="stop-time">10:45 → 11:00</div>
         <div class="stop-title">Wymeldowanie</div>
         <p class="stop-desc">Zbiórka w recepcji, zdanie pokojów.</p>
@@ -442,9 +501,9 @@
         <div class="contact-name">Viola Wojciechowska</div>
         <div class="contact-role">Organizator główny</div>
       </div>
-      <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
+      <a class="contact-call" href="tel:+48698929808" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +48 000 000 000
+        +48 698 929 808
       </a>
     </div>
 
@@ -464,9 +523,9 @@
         <div class="contact-name">Cezary Gazda</div>
         <div class="contact-role">Koordynator — warsztaty kręgosłup</div>
       </div>
-      <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
+      <a class="contact-call" href="tel:+48734413037" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +48 000 000 000
+        +48 734 413 037
       </a>
     </div>
 
@@ -475,9 +534,9 @@
         <div class="contact-name">Jarosław Burak</div>
         <div class="contact-role">Koordynator — transport / autokar</div>
       </div>
-      <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
+      <a class="contact-call" href="tel:+48735990450" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +48 000 000 000
+        +48 735 990 450
       </a>
     </div>
 
@@ -485,9 +544,9 @@
       <div class="contact-info">
         <div class="contact-name">Szymon Lerski</div>
       </div>
-      <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
+      <a class="contact-call" href="tel:+48735990450" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +48 000 000 000
+        +48 735 990 450
       </a>
     </div>
   </section>
@@ -508,6 +567,110 @@
   mapImg.addEventListener('click', openLightbox);
   lightbox.addEventListener('click', closeLightbox);
   closeBtn.addEventListener('click', (e)=>{ e.stopPropagation(); closeLightbox(); });
+
+  /* ---------- Live "now" marker on the grafik ---------- */
+  (function(){
+    const rails = Array.from(document.querySelectorAll('.rail[data-date]'));
+    if(!rails.length) return;
+
+    function parseRailStart(rail){
+      const [y,m,d] = rail.dataset.date.split('-').map(Number);
+      return new Date(y, m-1, d, 0, 0, 0, 0);
+    }
+
+    function stopDateTime(stop, railDate){
+      const [hh,mm] = stop.dataset.time.split(':').map(Number);
+      const dt = new Date(railDate);
+      dt.setHours(hh, mm, 0, 0);
+      return dt;
+    }
+
+    function update(){
+      const now = new Date();
+
+      // Remove any existing marker
+      const existing = document.querySelector('.now-marker, .now-marker__dot');
+      if(existing){
+        document.querySelectorAll('.now-marker, .now-marker__dot').forEach(el => el.remove());
+      }
+
+      // Determine each rail's active window: from its first stop to
+      // either the next rail's start, or +18h if it's the last rail
+      // (covers events like dinner that run past midnight).
+      let targetRail = null, windowStart = null, windowEnd = null;
+
+      for(let i = 0; i < rails.length; i++){
+        const rail = rails[i];
+        const railDate = parseRailStart(rail);
+        const stops = Array.from(rail.querySelectorAll('.stop[data-time]'));
+        if(!stops.length) continue;
+
+        const start = stopDateTime(stops[0], railDate);
+        let end;
+        if(i + 1 < rails.length){
+          const nextStops = rails[i+1].querySelectorAll('.stop[data-time]');
+          if(nextStops.length){
+            end = stopDateTime(nextStops[0], parseRailStart(rails[i+1]));
+          }
+        }
+        if(!end){
+          end = new Date(start.getTime() + 18*60*60*1000);
+        }
+
+        if(now >= start && now < end){
+          targetRail = rail;
+          windowStart = start;
+          windowEnd = end;
+          break;
+        }
+      }
+
+      if(!targetRail) return; // outside the event window entirely — no marker
+
+      const stops = Array.from(targetRail.querySelectorAll('.stop[data-time]'));
+      const railDate = parseRailStart(targetRail);
+      const times = stops.map(s => stopDateTime(s, railDate).getTime());
+
+      // Clamp "now" within the first/last stop range for positioning
+      const nowMs = Math.min(Math.max(now.getTime(), times[0]), times[times.length-1]);
+
+      // Find the bracketing pair of stops and interpolate pixel position
+      let idx = 0;
+      for(let i = 0; i < times.length - 1; i++){
+        if(nowMs >= times[i] && nowMs <= times[i+1]){ idx = i; break; }
+        idx = i;
+      }
+      const tStart = times[idx], tEnd = times[Math.min(idx+1, times.length-1)];
+      const frac = tEnd > tStart ? (nowMs - tStart) / (tEnd - tStart) : 0;
+
+      const railRect = targetRail.getBoundingClientRect();
+      const topRect = stops[idx].getBoundingClientRect();
+      const botRect = stops[Math.min(idx+1, stops.length-1)].getBoundingClientRect();
+      const topOffset = (topRect.top - railRect.top);
+      const botOffset = (botRect.top - railRect.top);
+      const pos = topOffset + (botOffset - topOffset) * frac;
+
+      const hh = String(now.getHours()).padStart(2,'0');
+      const mm = String(now.getMinutes()).padStart(2,'0');
+
+      const dot = document.createElement('div');
+      dot.className = 'now-marker__dot';
+      dot.style.top = pos + 'px';
+
+      const marker = document.createElement('div');
+      marker.className = 'now-marker';
+      marker.style.top = pos + 'px';
+      marker.innerHTML =
+        '<div class="now-marker__arrow"></div><div class="now-marker__time">' + hh + ':' + mm + '</div>';
+
+      targetRail.appendChild(dot);
+      targetRail.appendChild(marker);
+    }
+
+    update();
+    setInterval(update, 30000);
+    window.addEventListener('resize', update);
+  })();
 </script>
 
 </body>
