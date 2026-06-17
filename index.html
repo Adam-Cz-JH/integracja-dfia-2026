@@ -224,7 +224,9 @@
   .contact-card{
     display:flex;
     align-items:center;
+    justify-content:space-between;
     gap:14px;
+    flex-wrap:wrap;
     padding:14px 16px;
     background:var(--bg-soft);
     border:1px solid var(--line);
@@ -259,17 +261,23 @@
     margin-top:1px;
   }
   .contact-call{
-    width:38px; height:38px;
-    border-radius:50%;
-    border:1px solid var(--line-strong);
     display:flex;
     align-items:center;
-    justify-content:center;
+    gap:8px;
+    height:38px;
+    padding:0 16px;
+    border-radius:19px;
+    border:1px solid var(--line-strong);
     flex-shrink:0;
     text-decoration:none;
     transition:background 0.15s ease;
+    font-family:'Space Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.02em;
+    color:var(--linen-dim);
+    white-space:nowrap;
   }
-  .contact-call svg{width:16px; height:16px; color:var(--brass);}
+  .contact-call svg{width:16px; height:16px; color:var(--brass); flex-shrink:0;}
   .contact-call:active{background:rgba(226,187,92,0.12);}
 
   /* lightbox for map */
@@ -436,6 +444,7 @@
       </div>
       <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +48 000 000 000
       </a>
     </div>
 
@@ -444,8 +453,9 @@
         <div class="contact-name">Adam Czyżewski</div>
         <div class="contact-role">Organizator główny, Koordynator — gongi</div>
       </div>
-      <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
+      <a class="contact-call" href="tel:+48693334041" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +48 693 334 041
       </a>
     </div>
 
@@ -456,6 +466,7 @@
       </div>
       <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +48 000 000 000
       </a>
     </div>
 
@@ -466,6 +477,7 @@
       </div>
       <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +48 000 000 000
       </a>
     </div>
 
@@ -475,6 +487,7 @@
       </div>
       <a class="contact-call" href="tel:+48000000000" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +48 000 000 000
       </a>
     </div>
   </section>
